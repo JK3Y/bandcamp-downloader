@@ -4,11 +4,14 @@
   "description": "Download full albums with ID3 tags",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "postinstall": "bower install"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bower": "latest",
     "cheerio": "^1.0.0-rc.2",
     "express": "latest",
     "request": "latest"
