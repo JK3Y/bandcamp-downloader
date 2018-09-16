@@ -3,6 +3,7 @@
 *.iml
 bower_components
 node_modules
+.DS_Store
 out
 gen
 # Created by .ignore support plugin (hsz.mobi)

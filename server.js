@@ -3,7 +3,7 @@ let request = require('request');
 let cheerio = require('cheerio');
 let app		= express();
 
-app.use(express.static('bower_components'));
+app.use(express.static('node_modules/@bower_components'));
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
