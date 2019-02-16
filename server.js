@@ -3,7 +3,9 @@ let request = require('request');
 let cheerio = require('cheerio');
 let app		= express();
 
-app.use(express.static('node_modules/@bower_components'));
+let cors_proxy = require('cors-anywhere').createServer()
+
+app.use(express.static('bower_components'));
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
@@ -41,10 +43,17 @@ app.get('/isup', (req, res) => {
 	res.send("OK");
 });
 
+app.get('/proxy/:proxyUrl*', (req, res) => {
+	req.url = req.url.replace('/proxy/', '/')
+	cors_proxy.emit('request', req, res)
+})
 
-app.listen('9000');
+let server = app.listen(process.env.PORT || 5000, () => {
+	let host = server.address().address
+	let port = server.address().port
 
-console.log('Magic happens on port 9000');
+	console.log('Server is listening on port %d in %s mode', port, app.settings.env);
+})
 
 exports = module.exports = app;
 
@@ -73,7 +82,7 @@ function getFileList(albumData, metaData) {
 	let list = {
 		artist: metaData.artist,
 		album: metaData.album,
-		image: 'http://jamador-cors-anywhere.herokuapp.com/' + metaData.image,
+		image: '/proxy/' + metaData.image,
 		tracks: []
 	};
 	let tmpArr = albumData.match(/(\[{)(.)+(}\])/g)[0];
@@ -92,7 +101,7 @@ function getFileList(albumData, metaData) {
             	'year': metaData.year,
             	// 'image': 'http://jamador-cors-anywhere.herokuapp.com/' + metaData.image,
             	'track': tmpList[i].track_num,
-                'file': 'http://jamador-cors-anywhere.herokuapp.com/' + tmpList[i].file['mp3-128'],
+                'file': '/proxy/' + tmpList[i].file['mp3-128'],
                 'filename': tmpList[i].track_num + ' - ' + tmpList[i].title
             };
 

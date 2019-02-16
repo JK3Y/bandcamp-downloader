@@ -6,24 +6,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/@bower_components'), 'bower_components', 'junction') } catch (e) { }\""
+    "postinstall": "bower install"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bower": "latest",
     "cheerio": "^1.0.0-rc.2",
+    "cors-anywhere": "^0.4.1",
     "express": "latest",
-    "request": "latest",
-    "@bower_components/bootstrap": "twbs/bootstrap#^3.3.7",
-    "@bower_components/file-saver": "eligrey/FileSaver.js#1.3.3",
-    "@bower_components/jquery": "jquery/jquery-dist#1.9.1 - 3",
-    "@bower_components/jszip": "Stuk/jszip#*"
+    "request": "latest"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"
   },
   "engines": {
-    "yarn": ">= 1.0.0"
+    "node": "10.x",
+    "npm": "6.5.x"
   }
 }
