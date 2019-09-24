@@ -18,5 +18,5 @@ ID3 tags can be adjusted prior to downloading any files. Just make your changes 
 
 ## Building
 ```
-npm install && npm start
+yarn install && yarn start
 ```

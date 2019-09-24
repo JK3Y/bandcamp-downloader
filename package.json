@@ -2,26 +2,36 @@
   "name": "bandcamp-downloader",
   "version": "1.0.0",
   "description": "Download full albums with ID3 tags",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "postinstall": "bower install"
+    "dev": "nodemon -w server -w package.json server/server.js",
+    "build": "next build",
+    "start": "node server/server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bower": "latest",
-    "cheerio": "^1.0.0-rc.2",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-less": "^1.0.1",
+    "antd": "^3.23.2",
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
     "cors-anywhere": "^0.4.1",
-    "express": "latest",
-    "request": "latest"
+    "express": "^4.17.1",
+    "file-saver": "^2.0.2",
+    "global": "^4.4.0",
+    "jszip": "^3.2.2",
+    "next": "^9.0.5",
+    "next-routes": "^1.4.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "request": "^2.88.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.19.2"
   },
   "engines": {
-    "node": "10.x",
-    "npm": "6.5.x"
+    "node": "12.x",
+    "npm": "6.10.x"
   }
 }
